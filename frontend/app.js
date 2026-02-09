@@ -7,8 +7,10 @@
 // ================================
 // Configuration
 // ================================
+// Auto-detect: If running on port 80 (Docker), use /api, else use localhost:8000
+const isDocker = window.location.port === '' || window.location.port === '80';
 const CONFIG = {
-    API_URL: 'http://localhost:8000',
+    API_URL: isDocker ? '/api' : 'http://localhost:8000',
     EXCHANGE_API_URL: 'https://api.exchangerate-api.com/v4/latest/VND',
 
     STREAM_INTERVAL: 300,        // Detection every 300ms
